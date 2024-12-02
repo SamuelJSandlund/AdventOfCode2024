@@ -32,11 +32,17 @@ int main(){
 
     //cycle through list1 and look for matches in list2
     int similarityScore = 0;
+    size_t start = 0;
     for(size_t i = 0 ; i < list1.size() ; ++i){
         int matches = 0;
-        for(size_t j = 0 ; j < list2.size() ; ++j){
+        for(size_t j = start ; j < list2.size() ; ++j){
             if(list1[i] == list2[j]){
                 matches++;
+            }
+            //move on after all potential matches have been passed
+            else if(list1[i] < list2[j]){
+                start = j;
+                break;
             }
         }
         //increase total similarity score
