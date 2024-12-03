@@ -28,19 +28,18 @@ int main(){
                     continue;
                 }
             }
-            cout << line.substr(mul, (end-mul+1)) << '\n';
 
             //if correct format has been confirmed parse out numbers
             int num1, num2;
             num1 = stoi(line.substr(mul+4,(comma-(mul+4))));
             num2 = stoi(line.substr(comma+1, (end-comma-1)));
-            cout << num1 << " " << num2 << '\n';
-            mul = line.find("mul(", end);
 
+            //look for next mul
+            mul = line.find("mul(", end);
             total = total + (num1*num2);
         }
         cout << '\n';
     }
-    cout << "ANSWER: " << total;
+    cout << total;
     return 0;
 }
